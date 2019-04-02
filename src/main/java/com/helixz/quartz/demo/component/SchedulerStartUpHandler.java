@@ -14,17 +14,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class SchedulerStartUpHandler implements ApplicationRunner {
 
-    @Autowired
-    private SchedulerService schedulerService;
+	@Autowired
+	private SchedulerService schedulerService;
 
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-        log.info("Schedule all new scheduler jobs at app startup - starting");
-        try {
-            schedulerService.startAllSchedulers();
-            log.info("Schedule all new scheduler jobs at app startup - complete");
-        } catch (Exception ex) {
-            log.error("Schedule all new scheduler jobs at app startup - error", ex);
-        }
-    }
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		log.info("Schedule all new scheduler jobs at app startup - starting");
+		try {
+			schedulerService.startAllSchedulers();
+			log.info("Schedule all new scheduler jobs at app startup - complete");
+		} catch (Exception ex) {
+			log.error("Schedule all new scheduler jobs at app startup - error", ex);
+		}
+	}
 }

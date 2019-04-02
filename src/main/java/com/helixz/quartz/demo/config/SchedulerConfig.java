@@ -17,33 +17,33 @@ import java.util.Properties;
 @Configuration
 public class SchedulerConfig {
 
-    @Autowired
-    private DataSource dataSource;
+	@Autowired
+	private DataSource dataSource;
 
-    @Autowired
-    private ApplicationContext applicationContext;
+	@Autowired
+	private ApplicationContext applicationContext;
 
-    @Autowired
-    private QuartzProperties quartzProperties;
+	@Autowired
+	private QuartzProperties quartzProperties;
 
-    /**
-     * create scheduler factory
-     */
-    @Bean
-    public SchedulerFactoryBean schedulerFactoryBean() {
+	/**
+	 * create scheduler factory
+	 */
+	@Bean
+	public SchedulerFactoryBean schedulerFactoryBean() {
 
-        SchedulerJobFactory jobFactory = new SchedulerJobFactory();
-        jobFactory.setApplicationContext(applicationContext);
+		SchedulerJobFactory jobFactory = new SchedulerJobFactory();
+		jobFactory.setApplicationContext(applicationContext);
 
-        Properties properties = new Properties();
-        properties.putAll(quartzProperties.getProperties());
+		Properties properties = new Properties();
+		properties.putAll(quartzProperties.getProperties());
 
-        SchedulerFactoryBean factory = new SchedulerFactoryBean();
-        factory.setOverwriteExistingJobs(true);
-        factory.setDataSource(dataSource);
-        factory.setQuartzProperties(properties);
-        factory.setJobFactory(jobFactory);
-        return factory;
-    }
+		SchedulerFactoryBean factory = new SchedulerFactoryBean();
+		factory.setOverwriteExistingJobs(true);
+		factory.setDataSource(dataSource);
+		factory.setQuartzProperties(properties);
+		factory.setJobFactory(jobFactory);
+		return factory;
+	}
 
 }
